@@ -1,12 +1,17 @@
-window.onload = function(){
+window.addEventListener("load",function(){
 initRippleJS(document.getElementsByClassName("ripple-js-dark"));
 initRippleJS(document.getElementsByClassName("ripple-js-light"));
-}
-function initRippleJS(rippleElements){
+},false);
+
+
+function initRippleJS(rippleElements){console.log("a");
   for(var i = 0; i < rippleElements.length; i++) {
-    rippleElements[i].onclick = function(e) {
-      var X = e.pageX - this.offsetLeft;
-      var Y = e.pageY - this.offsetTop;
+    rippleElements[i].addEventListener("click",function(e) {
+      // var X = e.pageX - this.offsetLeft;
+      // var Y = e.pageY - this.offsetTop;
+      rect = this.getBoundingClientRect();
+      var X = e.clientX - rect.left;
+      var Y = e.clientY - rect.top;
       var rippleDiv = document.createElement("div");
       rippleDiv.classList.add('ripple-js-elem');
       rippleDiv.setAttribute("style","top:"+Y+"px; left:"+X+"px;");
@@ -14,6 +19,6 @@ function initRippleJS(rippleElements){
       setTimeout(function(){
         rippleDiv.parentElement.removeChild(rippleDiv);
       }, 900);
-    }
+    },false);
   }
 }
