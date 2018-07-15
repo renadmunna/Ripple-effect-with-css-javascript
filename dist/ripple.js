@@ -4,7 +4,7 @@ initRippleJS(document.getElementsByClassName("ripple-js-light"));
 },false);
 
 
-function initRippleJS(rippleElements){console.log("a");
+function initRippleJS(rippleElements){
   for(var i = 0; i < rippleElements.length; i++) {
     rippleElements[i].addEventListener("click",function(e) {
       // var X = e.pageX - this.offsetLeft;
